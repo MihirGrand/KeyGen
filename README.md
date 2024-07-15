@@ -6,3 +6,7 @@ A small key generator utility for my softwares
 - Looks for keys in the provided database and collection
 - Lists the keys
 - Generates a new key for a new company, inserts it back into the db
+
+Parameters             |  Main
+:-------------------------:|:-------------------------:
+![Alt text](./KeyGen/Images/DBParams.png)  |  ![Alt text](./KeyGen/Images/Main.png)
