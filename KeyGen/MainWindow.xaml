@@ -1,0 +1,50 @@
+﻿<Window x:Class="KeyGen.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KeyGen"
+        mc:Ignorable="d"
+        Title="KeyGen for my softwares" Height="500" Width="500" Loaded="Window_Loaded" Initialized="Window_Initialized" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <local:BooleanToString  x:Key="BooleanToString"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width= "4*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        <Grid HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Company Name:   " Grid.Column="0" Grid.Row="0" VerticalAlignment="Center"/>
+                <TextBox x:Name="CompanyName" Height="30" Width="100" Grid.Column="1" Margin="0 20 0 0"/>
+            </Grid>
+            <Button x:Name="Generate" Content="Generate" Width="100" Height="40" Click="Generate_Click" Grid.Row="1" VerticalAlignment="Top" Margin="0 20 0 0"/>
+        </Grid>
+        <DataGrid x:Name="KeyGrid" AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False" HorizontalAlignment="Center" CopyingRowClipboardContent="KeyGrid_CopyingRowClipboardContent" Grid.Column="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Key" Binding="{Binding key}"/>
+                <DataGridTextColumn Header="Company Name" Binding="{Binding companyName}"/>
+                <DataGridTextColumn Header="Used" Binding="{Binding used, Converter={StaticResource BooleanToString}}"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Copy" CommandParameter="{Binding Path=key}" Click="Button_Click" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
