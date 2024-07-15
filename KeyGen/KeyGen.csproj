@@ -311,6 +311,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\DBParams.png" />
+    <Resource Include="Images\Main.png" />
     <Content Include="mongocrypt.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
